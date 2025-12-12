@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Портфолио Разработчика</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Иконки (можно подключить FontAwesome, но здесь используем эмодзи для легкости) -->
+</head>
+<body>
+
+    <!-- ЭКРАН 1: ГЛАВНАЯ -->
+    <div id="home-screen" class="screen">
+        <div class="profile-section">
+            <div class="avatar-placeholder">👨‍💻</div>
+            <h1 class="dev-name">Виктор Щемелев</h1>
+            <p class="dev-role">Telegram Mini Apps Developer</p>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card main-card" onclick="goTo('projects-screen')">
+                <div class="card-icon">🚀</div>
+                <div class="card-title">Мои Проекты</div>
+                <div class="card-desc">Mini Apps портфолио</div>
+            </div>
+            
+            <div class="menu-card" onclick="goTo('about-screen')">
+                <div class="card-icon">👤</div>
+                <div class="card-title">Обо мне</div>
+                <div class="card-desc">Навыки и контакты</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 2: СПИСОК ПРОЕКТОВ -->
+    <div id="projects-screen" class="screen hidden">
+        <div class="nav-header">
+            <button class="back-btn" onclick="goTo('home-screen')">← Назад</button>
+            <h2>Проекты</h2>
+        </div>
+
+        <div class="projects-list">
+            <!-- Карточка проекта 1: Копилка -->
+            <div class="project-card" onclick="goTo('project-kopilka')">
+                <div class="preview-mini kopilka-theme">
+                    <div class="mini-traffic-light">
+                        <span class="dot green"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot red"></span>
+                    </div>
+                </div>
+                <div class="p-info">
+                    <h3>Умная Копилка</h3>
+                    <p>Финансовый марафон</p>
+                </div>
+                <div class="arrow">›</div>
+            </div>
+
+            <!-- Карточка проекта 2: Подписки -->
+            <div class="project-card" onclick="goTo('project-subs')">
+                <div class="preview-mini subs-theme">
+                    <div class="mini-header">250 ₽</div>
+                    <div class="mini-row"></div>
+                </div>
+                <div class="p-info">
+                    <h3>Вот Куда 📉</h3>
+                    <p>Трекер подписок</p>
+                </div>
+                <div class="arrow">›</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 3: ДЕТАЛИ КОПИЛКИ -->
+    <div id="project-kopilka" class="screen hidden">
+        <div class="nav-header">
+            <button class="back-btn" onclick="goTo('projects-screen')">← Назад</button>
+            <h2>Копилка</h2>
+        </div>
+
+        <div class="details-content">
+            <!-- Визуализация интерфейса (CSS Mockup) -->
+            <div class="app-mockup">
+                <div class="mock-header">План на Декабрь</div>
+                <div class="mock-card green-card">
+                    <div class="mock-circle"></div>
+                    <div class="mock-lines">
+                        <div class="line w-50"></div>
+                        <div class="line w-30"></div>
+                    </div>
+                </div>
+                <div class="mock-card yellow-card">
+                     <div class="mock-circle"></div>
+                     <div class="mock-lines"></div>
+                </div>
+            </div>
+
+            <div class="project-desc">
+                <h3>Задача</h3>
+                <p>Помочь пользователям накопить крупную сумму в игровой форме "Светофор".</p>
+                
+                <h3>Функционал</h3>
+                <ul>
+                    <li>🔥 Геймификация накоплений</li>
+                    <li>📅 Авто-генерация сетки по дням</li>
+                    <li>☁️ CloudStorage сохранение</li>
+                    <li>📳 Haptic Feedback</li>
+                </ul>
+
+                <div class="tech-stack">
+                    <span>HTML5</span><span>CSS3</span><span>JS</span><span>WebApp API</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-action">
+            <button class="main-btn" onclick="openBot('my_smart_kopilka_bot')">ОТКРЫТЬ БОТА</button>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 4: ДЕТАЛИ ПОДПИСОК -->
+    <div id="project-subs" class="screen hidden">
+        <div class="nav-header">
+            <button class="back-btn" onclick="goTo('projects-screen')">← Назад</button>
+            <h2>Вот Куда 📉</h2>
+        </div>
+
+        <div class="details-content">
+            <!-- Визуализация интерфейса -->
+            <div class="app-mockup">
+                <div class="mock-total">
+                    <span>Расход в месяц</span>
+                    <h1>250 ₽</h1>
+                </div>
+                <div class="mock-list-item">
+                    <div class="ml-left">
+                        <div class="ml-title">Теле2</div>
+                        <div class="ml-sub">Через 31 дн.</div>
+                    </div>
+                    <div class="ml-right">250 ₽</div>
+                </div>
+                <div class="mock-list-item ghost">
+                    <div class="ml-left">
+                        <div class="ml-title">Яндекс</div>
+                    </div>
+                    <div class="ml-right">299 ₽</div>
+                </div>
+            </div>
+
+            <div class="project-desc">
+                <h3>Задача</h3>
+                <p>Контроль регулярных списаний, чтобы не забывать отменять ненужные подписки.</p>
+                
+                <h3>Функционал</h3>
+                <ul>
+                    <li>💰 Подсчет общего расхода</li>
+                    <li>🔔 Сортировка по дате списания</li>
+                    <li>💾 Локальная база в облаке TG</li>
+                </ul>
+
+                <div class="tech-stack">
+                    <span>JS ES6</span><span>CloudStorage</span><span>Flexbox</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-action">
+            <button class="main-btn" onclick="openBot('KudaUshli_bot')">ОТКРЫТЬ БОТА</button>
+        </div>
+    </div>
+
+    <!-- ЭКРАН 5: ОБО МНЕ -->
+    <div id="about-screen" class="screen hidden">
+        <div class="nav-header">
+            <button class="back-btn" onclick="goTo('home-screen')">← Назад</button>
+            <h2>Обо мне</h2>
+        </div>
+
+        <div class="about-content">
+            <div class="about-card">
+                <h3>Навыки</h3>
+                <div class="tech-stack">
+                    <span>JavaScript</span><span>Telegram API</span><span>HTML/CSS</span>
+                    <span>Git</span><span>Figma</span><span>SPA</span>
+                </div>
+            </div>
+
+            <div class="about-text">
+                <p>Разрабатываю быстрые и нативные Mini Apps под ключ. Фокусируюсь на UX/UI, чтобы боты ощущались как полноценные приложения.</p>
+            </div>
+            
+            <button class="secondary-btn" onclick="openLink('https://google.com')">📄 Скачать резюме (PDF)</button>
+        </div>
+
+        <div class="bottom-action">
+            <button class="main-btn telegram-color" onclick="contactDev()">НАПИСАТЬ МНЕ</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
